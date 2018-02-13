@@ -1,0 +1,904 @@
+
+Following error output occurs when trying to compile websocketpp's example "debug_client" with wolfssl:
+
+
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:31:0,
+                 from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/wolfcrypt/settings.h:1573:14: warning: #warning "For timing resistance / side-channel attack prevention consider using harden options" [-Wcpp]
+             #warning "For timing resistance / side-channel attack prevention consider using harden options"
+              ^
+In file included from /usr/include/boost/config.hpp:61:0,
+                 from /usr/include/boost/asio/detail/config.hpp:26,
+                 from /usr/include/boost/asio/steady_timer.hpp:18,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio.hpp:61,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/base.hpp:31,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/connection.hpp:31,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/endpoint.hpp:32,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:32,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/context_base.hpp:118:3: error: ‘SSL_OP_ALL’ was not declared in this scope
+   BOOST_ASIO_STATIC_CONSTANT(long, default_workarounds = SSL_OP_ALL);
+   ^
+/usr/include/boost/asio/ssl/context_base.hpp:119:3: error: ‘SSL_OP_SINGLE_DH_USE’ was not declared in this scope
+   BOOST_ASIO_STATIC_CONSTANT(long, single_dh_use = SSL_OP_SINGLE_DH_USE);
+   ^
+/usr/include/boost/asio/ssl/context_base.hpp:121:3: error: ‘SSL_OP_NO_SSLv3’ was not declared in this scope
+   BOOST_ASIO_STATIC_CONSTANT(long, no_sslv3 = SSL_OP_NO_SSLv3);
+   ^
+/usr/include/boost/asio/ssl/context_base.hpp:122:3: error: ‘SSL_OP_NO_TLSv1’ was not declared in this scope
+   BOOST_ASIO_STATIC_CONSTANT(long, no_tlsv1 = SSL_OP_NO_TLSv1);
+   ^
+In file included from /usr/include/boost/asio/ssl/detail/openssl_init.hpp:100:0,
+                 from /usr/include/boost/asio/ssl/context.hpp:29,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/detail/impl/openssl_init.ipp: In destructor ‘boost::asio::ssl::detail::openssl_init_base::do_init::~do_init()’:
+/usr/include/boost/asio/ssl/detail/impl/openssl_init.ipp:74:29: error: expected id-expression before ‘;’ token
+     ::CONF_modules_unload(1);
+                             ^
+/usr/include/boost/asio/ssl/detail/impl/openssl_init.ipp:76:23: error: expected id-expression before ‘;’ token
+     ::ENGINE_cleanup();
+                       ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp: At global scope:
+/usr/include/boost/asio/ssl/impl/context.ipp:63:3: error: ‘DH’ does not name a type
+   DH* p;
+   ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In destructor ‘boost::asio::ssl::context::dh_cleanup::~dh_cleanup()’:
+/usr/include/boost/asio/ssl/impl/context.ipp:64:23: error: ‘p’ was not declared in this scope
+   ~dh_cleanup() { if (p) ::DH_free(p); }
+                       ^
+/usr/include/boost/asio/ssl/impl/context.ipp:64:26: error: ‘::DH_free’ has not been declared
+   ~dh_cleanup() { if (p) ::DH_free(p); }
+                          ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In constructor ‘boost::asio::ssl::context::context(boost::asio::ssl::context_base::method)’:
+/usr/include/boost/asio/ssl/impl/context.ipp:83:29: error: ‘::SSLv2_method’ has not been declared
+     handle_ = ::SSL_CTX_new(::SSLv2_method());
+                             ^
+/usr/include/boost/asio/ssl/impl/context.ipp:101:29: error: ‘::SSLv3_method’ has not been declared
+     handle_ = ::SSL_CTX_new(::SSLv3_method());
+                             ^
+/usr/include/boost/asio/ssl/impl/context.ipp:111:29: error: ‘::TLSv1_method’ has not been declared
+     handle_ = ::SSL_CTX_new(::TLSv1_method());
+                             ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In destructor ‘boost::asio::ssl::context::~context()’:
+/usr/include/boost/asio/ssl/impl/context.ipp:208:16: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+     if (handle_->default_passwd_callback_userdata)
+                ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:212:20: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+             handle_->default_passwd_callback_userdata);
+                    ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:214:14: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+       handle_->default_passwd_callback_userdata = 0;
+              ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:217:37: error: ‘SSL_CTX_get_app_data’ was not declared in this scope
+     if (SSL_CTX_get_app_data(handle_))
+                                     ^
+/usr/include/boost/asio/ssl/impl/context.ipp:223:38: error: ‘SSL_CTX_set_app_data’ was not declared in this scope
+       SSL_CTX_set_app_data(handle_, 0);
+                                      ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In member function ‘boost::system::error_code boost::asio::ssl::context::set_verify_mode(boost::asio::ssl::context_base::verify_mode, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/impl/context.ipp:311:36: error: ‘::SSL_CTX_get_verify_callback’ has not been declared
+   ::SSL_CTX_set_verify(handle_, v, ::SSL_CTX_get_verify_callback(handle_));
+                                    ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In member function ‘boost::system::error_code boost::asio::ssl::context::set_verify_depth(int, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/impl/context.ipp:327:3: error: ‘::SSL_CTX_set_verify_depth’ has not been declared
+   ::SSL_CTX_set_verify_depth(handle_, depth);
+   ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In member function ‘boost::system::error_code boost::asio::ssl::context::add_certificate_authority(const boost::asio::const_buffer&, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/impl/context.ipp:372:27: error: ‘::wolfSSL_PEM_read_bio_X509’ has not been declared
+     x509_cleanup cert = { ::PEM_read_bio_X509(bio.p, 0, 0, 0) };
+                           ^
+/usr/include/boost/asio/ssl/impl/context.ipp:375:31: error: ‘::wolfSSL_CTX_get_cert_store’ has not been declared
+       if (X509_STORE* store = ::SSL_CTX_get_cert_store(handle_))
+                               ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In member function ‘boost::system::error_code boost::asio::ssl::context::use_certificate(const boost::asio::const_buffer&, boost::asio::ssl::context_base::file_format, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/impl/context.ipp:456:9: error: ‘::SSL_CTX_use_certificate_ASN1’ has not been declared
+     if (::SSL_CTX_use_certificate_ASN1(handle_,
+         ^
+/usr/include/boost/asio/ssl/impl/context.ipp:469:29: error: ‘::wolfSSL_PEM_read_bio_X509’ has not been declared
+       x509_cleanup cert = { ::PEM_read_bio_X509(bio.p, 0, 0, 0) };
+                             ^
+/usr/include/boost/asio/ssl/impl/context.ipp:472:13: error: ‘::SSL_CTX_use_certificate’ has not been declared
+         if (::SSL_CTX_use_certificate(handle_, cert.p) == 1)
+             ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In member function ‘boost::system::error_code boost::asio::ssl::context::use_certificate_chain(const boost::asio::const_buffer&, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/impl/context.ipp:550:7: error: ‘::wolfSSL_PEM_read_bio_X509_AUX’ has not been declared
+       ::PEM_read_bio_X509_AUX(bio.p, 0,
+       ^
+/usr/include/boost/asio/ssl/impl/context.ipp:551:18: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+           handle_->default_passwd_callback,
+                  ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:552:18: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+           handle_->default_passwd_callback_userdata) };
+                  ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:555:38: error: ‘ERR_R_PEM_LIB’ was not declared in this scope
+       ec = boost::system::error_code(ERR_R_PEM_LIB,
+                                      ^
+/usr/include/boost/asio/ssl/impl/context.ipp:560:18: error: ‘::SSL_CTX_use_certificate’ has not been declared
+     int result = ::SSL_CTX_use_certificate(handle_, cert.p);
+                  ^
+/usr/include/boost/asio/ssl/impl/context.ipp:569:16: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+     if (handle_->extra_certs)
+                ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:571:7: error: ‘::sk_X509_pop_free’ has not been declared
+       ::sk_X509_pop_free(handle_->extra_certs, X509_free);
+       ^
+/usr/include/boost/asio/ssl/impl/context.ipp:571:33: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+       ::sk_X509_pop_free(handle_->extra_certs, X509_free);
+                                 ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:572:14: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+       handle_->extra_certs = 0;
+              ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:575:27: error: ‘::wolfSSL_PEM_read_bio_X509’ has not been declared
+     while (X509* cacert = ::PEM_read_bio_X509(bio.p, 0,
+                           ^
+/usr/include/boost/asio/ssl/impl/context.ipp:576:18: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+           handle_->default_passwd_callback,
+                  ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:577:18: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+           handle_->default_passwd_callback_userdata))
+                  ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:588:14: error: ‘::wolfSSL_ERR_peek_last_error’ has not been declared
+     result = ::ERR_peek_last_error();
+              ^
+/usr/include/boost/asio/ssl/impl/context.ipp:589:28: error: ‘ERR_GET_LIB’ was not declared in this scope
+     if ((ERR_GET_LIB(result) == ERR_LIB_PEM)
+                            ^
+/usr/include/boost/asio/ssl/impl/context.ipp:589:33: error: ‘ERR_LIB_PEM’ was not declared in this scope
+     if ((ERR_GET_LIB(result) == ERR_LIB_PEM)
+                                 ^
+/usr/include/boost/asio/ssl/impl/context.ipp:590:39: error: ‘PEM_R_NO_START_LINE’ was not declared in this scope
+         && (ERR_GET_REASON(result) == PEM_R_NO_START_LINE))
+                                       ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In member function ‘boost::system::error_code boost::asio::ssl::context::use_private_key(const boost::asio::const_buffer&, boost::asio::ssl::context_base::file_format, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/impl/context.ipp:649:27: error: ‘::d2i_PrivateKey_bio’ has not been declared
+       evp_private_key.p = ::d2i_PrivateKey_bio(bio.p, 0);
+                           ^
+/usr/include/boost/asio/ssl/impl/context.ipp:652:27: error: ‘::PEM_read_bio_PrivateKey’ has not been declared
+       evp_private_key.p = ::PEM_read_bio_PrivateKey(
+                           ^
+/usr/include/boost/asio/ssl/impl/context.ipp:653:28: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+           bio.p, 0, handle_->default_passwd_callback,
+                            ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:654:18: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+           handle_->default_passwd_callback_userdata);
+                  ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:665:11: error: ‘::SSL_CTX_use_PrivateKey’ has not been declared
+       if (::SSL_CTX_use_PrivateKey(handle_, evp_private_key.p) == 1)
+           ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In member function ‘boost::system::error_code boost::asio::ssl::context::use_rsa_private_key(const boost::asio::const_buffer&, boost::asio::ssl::context_base::file_format, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/impl/context.ipp:708:27: error: ‘::d2i_RSAPrivateKey_bio’ has not been declared
+       rsa_private_key.p = ::d2i_RSAPrivateKey_bio(bio.p, 0);
+                           ^
+/usr/include/boost/asio/ssl/impl/context.ipp:711:27: error: ‘::PEM_read_bio_RSAPrivateKey’ has not been declared
+       rsa_private_key.p = ::PEM_read_bio_RSAPrivateKey(
+                           ^
+/usr/include/boost/asio/ssl/impl/context.ipp:712:28: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+           bio.p, 0, handle_->default_passwd_callback,
+                            ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:713:18: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+           handle_->default_passwd_callback_userdata);
+                  ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:724:11: error: ‘::SSL_CTX_use_RSAPrivateKey’ has not been declared
+       if (::SSL_CTX_use_RSAPrivateKey(handle_, rsa_private_key.p) == 1)
+           ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In member function ‘boost::system::error_code boost::asio::ssl::context::use_tmp_dh_file(const string&, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/impl/context.ipp:851:23: error: ‘::wolfSSL_BIO_new_file’ has not been declared
+   bio_cleanup bio = { ::BIO_new_file(filename.c_str(), "r") };
+                       ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In member function ‘boost::system::error_code boost::asio::ssl::context::do_use_tmp_dh(BIO*, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/impl/context.ipp:868:21: error: ‘::PEM_read_bio_DHparams’ has not been declared
+   dh_cleanup dh = { ::PEM_read_bio_DHparams(bio, 0, 0, 0) };
+                     ^
+/usr/include/boost/asio/ssl/impl/context.ipp:869:10: error: ‘struct boost::asio::ssl::context::dh_cleanup’ has no member named ‘p’
+   if (dh.p)
+          ^
+/usr/include/boost/asio/ssl/impl/context.ipp:871:9: error: ‘::wolfSSL_CTX_set_tmp_dh’ has not been declared
+     if (::SSL_CTX_set_tmp_dh(handle_, dh.p) == 1)
+         ^
+/usr/include/boost/asio/ssl/impl/context.ipp:871:42: error: ‘struct boost::asio::ssl::context::dh_cleanup’ has no member named ‘p’
+     if (::SSL_CTX_set_tmp_dh(handle_, dh.p) == 1)
+                                          ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In member function ‘boost::system::error_code boost::asio::ssl::context::do_set_verify_callback(boost::asio::ssl::detail::verify_callback_base*, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/impl/context.ipp:887:35: error: ‘SSL_CTX_get_app_data’ was not declared in this scope
+   if (SSL_CTX_get_app_data(handle_))
+                                   ^
+/usr/include/boost/asio/ssl/impl/context.ipp:893:41: error: ‘SSL_CTX_set_app_data’ was not declared in this scope
+   SSL_CTX_set_app_data(handle_, callback);
+                                         ^
+/usr/include/boost/asio/ssl/impl/context.ipp:896:7: error: ‘::wolfSSL_CTX_get_verify_mode’ has not been declared
+       ::SSL_CTX_get_verify_mode(handle_),
+       ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In static member function ‘static int boost::asio::ssl::context::verify_callback_function(int, X509_STORE_CTX*)’:
+/usr/include/boost/asio/ssl/impl/context.ipp:911:29: error: ‘::SSL_get_SSL_CTX’ has not been declared
+       if (SSL_CTX* handle = ::SSL_get_SSL_CTX(ssl))
+                             ^
+/usr/include/boost/asio/ssl/impl/context.ipp:913:40: error: ‘SSL_CTX_get_app_data’ was not declared in this scope
+         if (SSL_CTX_get_app_data(handle))
+                                        ^
+/usr/include/boost/asio/ssl/impl/context.ipp: In member function ‘boost::system::error_code boost::asio::ssl::context::do_set_password_callback(boost::asio::ssl::detail::password_callback_base*, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/impl/context.ipp:932:14: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+   if (handle_->default_passwd_callback_userdata)
+              ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:934:16: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+         handle_->default_passwd_callback_userdata);
+                ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/context.hpp:786:0,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/context.ipp:936:10: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+   handle_->default_passwd_callback_userdata = callback;
+          ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+ typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
+                ^
+In file included from /usr/include/boost/asio/ssl/rfc2818_verification.hpp:99:0,
+                 from /usr/include/boost/asio/ssl.hpp:23,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp: In member function ‘bool boost::asio::ssl::rfc2818_verification::operator()(bool, boost::asio::ssl::verify_context&) const’:
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:60:3: error: ‘GENERAL_NAMES’ was not declared in this scope
+   GENERAL_NAMES* gens = static_cast<GENERAL_NAMES*>(
+   ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:60:18: error: ‘gens’ was not declared in this scope
+   GENERAL_NAMES* gens = static_cast<GENERAL_NAMES*>(
+                  ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:60:37: error: ‘GENERAL_NAMES’ does not name a type
+   GENERAL_NAMES* gens = static_cast<GENERAL_NAMES*>(
+                                     ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:60:50: error: expected ‘>’ before ‘*’ token
+   GENERAL_NAMES* gens = static_cast<GENERAL_NAMES*>(
+                                                  ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:60:50: error: expected ‘(’ before ‘*’ token
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:60:51: error: expected primary-expression before ‘>’ token
+   GENERAL_NAMES* gens = static_cast<GENERAL_NAMES*>(
+                                                   ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:61:56: error: ‘wolfSSL_X509_get_ext_d2i’ was not declared in this scope
+       X509_get_ext_d2i(cert, NID_subject_alt_name, 0, 0));
+                                                        ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:61:58: error: expected ‘)’ before ‘;’ token
+       X509_get_ext_d2i(cert, NID_subject_alt_name, 0, 0));
+                                                          ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:62:47: error: ‘sk_GENERAL_NAME_num’ was not declared in this scope
+   for (int i = 0; i < sk_GENERAL_NAME_num(gens); ++i)
+                                               ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:64:54: error: ‘sk_GENERAL_NAME_value’ was not declared in this scope
+     GENERAL_NAME* gen = sk_GENERAL_NAME_value(gens, i);
+                                                      ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:65:12: error: invalid use of incomplete type ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
+     if (gen->type == GEN_DNS && !is_address)
+            ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:169:16: note: forward declaration of ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
+ typedef struct WOLFSSL_ASN1_OBJECT    WOLFSSL_ASN1_OBJECT;
+                ^
+In file included from /usr/include/boost/asio/ssl/rfc2818_verification.hpp:99:0,
+                 from /usr/include/boost/asio/ssl.hpp:23,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:65:22: error: ‘GEN_DNS’ was not declared in this scope
+     if (gen->type == GEN_DNS && !is_address)
+                      ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:67:7: error: ‘ASN1_IA5STRING’ was not declared in this scope
+       ASN1_IA5STRING* domain = gen->d.dNSName;
+       ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:67:23: error: ‘domain’ was not declared in this scope
+       ASN1_IA5STRING* domain = gen->d.dNSName;
+                       ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:67:35: error: invalid use of incomplete type ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
+       ASN1_IA5STRING* domain = gen->d.dNSName;
+                                   ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:169:16: note: forward declaration of ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
+ typedef struct WOLFSSL_ASN1_OBJECT    WOLFSSL_ASN1_OBJECT;
+                ^
+In file included from /usr/include/boost/asio/ssl/rfc2818_verification.hpp:99:0,
+                 from /usr/include/boost/asio/ssl.hpp:23,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:68:27: error: ‘V_ASN1_IA5STRING’ was not declared in this scope
+       if (domain->type == V_ASN1_IA5STRING && domain->data && domain->length)
+                           ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:74:34: error: ‘GENERAL_NAMES_free’ was not declared in this scope
+           GENERAL_NAMES_free(gens);
+                                  ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:79:17: error: invalid use of incomplete type ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
+     else if (gen->type == GEN_IPADD && is_address)
+                 ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:169:16: note: forward declaration of ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
+ typedef struct WOLFSSL_ASN1_OBJECT    WOLFSSL_ASN1_OBJECT;
+                ^
+In file included from /usr/include/boost/asio/ssl/rfc2818_verification.hpp:99:0,
+                 from /usr/include/boost/asio/ssl.hpp:23,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:79:27: error: ‘GEN_IPADD’ was not declared in this scope
+     else if (gen->type == GEN_IPADD && is_address)
+                           ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:81:7: error: ‘ASN1_OCTET_STRING’ was not declared in this scope
+       ASN1_OCTET_STRING* ip_address = gen->d.iPAddress;
+       ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:81:26: error: ‘ip_address’ was not declared in this scope
+       ASN1_OCTET_STRING* ip_address = gen->d.iPAddress;
+                          ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:81:42: error: invalid use of incomplete type ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
+       ASN1_OCTET_STRING* ip_address = gen->d.iPAddress;
+                                          ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:169:16: note: forward declaration of ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
+ typedef struct WOLFSSL_ASN1_OBJECT    WOLFSSL_ASN1_OBJECT;
+                ^
+In file included from /usr/include/boost/asio/ssl/rfc2818_verification.hpp:99:0,
+                 from /usr/include/boost/asio/ssl.hpp:23,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:82:31: error: ‘V_ASN1_OCTET_STRING’ was not declared in this scope
+       if (ip_address->type == V_ASN1_OCTET_STRING && ip_address->data)
+                               ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:89:36: error: ‘GENERAL_NAMES_free’ was not declared in this scope
+             GENERAL_NAMES_free(gens);
+                                    ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:98:36: error: ‘GENERAL_NAMES_free’ was not declared in this scope
+             GENERAL_NAMES_free(gens);
+                                    ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:105:26: error: ‘GENERAL_NAMES_free’ was not declared in this scope
+   GENERAL_NAMES_free(gens);
+                          ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:112:48: error: ‘NID_commonName’ was not declared in this scope
+   while ((i = X509_NAME_get_index_by_NID(name, NID_commonName, i)) >= 0)
+                                                ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:112:65: error: ‘X509_NAME_get_index_by_NID’ was not declared in this scope
+   while ((i = X509_NAME_get_index_by_NID(name, NID_commonName, i)) >= 0)
+                                                                 ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:114:5: error: ‘X509_NAME_ENTRY’ was not declared in this scope
+     X509_NAME_ENTRY* name_entry = X509_NAME_get_entry(name, i);
+     ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:114:22: error: ‘name_entry’ was not declared in this scope
+     X509_NAME_ENTRY* name_entry = X509_NAME_get_entry(name, i);
+                      ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:114:62: error: ‘X509_NAME_get_entry’ was not declared in this scope
+     X509_NAME_ENTRY* name_entry = X509_NAME_get_entry(name, i);
+                                                              ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:115:54: error: ‘X509_NAME_ENTRY_get_data’ was not declared in this scope
+     common_name = X509_NAME_ENTRY_get_data(name_entry);
+                                                      ^
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:117:33: error: invalid use of incomplete type ‘ASN1_STRING {aka struct WOLFSSL_ASN1_STRING}’
+   if (common_name && common_name->data && common_name->length)
+                                 ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:171:16: note: forward declaration of ‘ASN1_STRING {aka struct WOLFSSL_ASN1_STRING}’
+ typedef struct WOLFSSL_ASN1_STRING      WOLFSSL_ASN1_STRING;
+                ^
+In file included from /usr/include/boost/asio/ssl/rfc2818_verification.hpp:99:0,
+                 from /usr/include/boost/asio/ssl.hpp:23,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:117:54: error: invalid use of incomplete type ‘ASN1_STRING {aka struct WOLFSSL_ASN1_STRING}’
+   if (common_name && common_name->data && common_name->length)
+                                                      ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:171:16: note: forward declaration of ‘ASN1_STRING {aka struct WOLFSSL_ASN1_STRING}’
+ typedef struct WOLFSSL_ASN1_STRING      WOLFSSL_ASN1_STRING;
+                ^
+In file included from /usr/include/boost/asio/ssl/rfc2818_verification.hpp:99:0,
+                 from /usr/include/boost/asio/ssl.hpp:23,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:119:68: error: invalid use of incomplete type ‘ASN1_STRING {aka struct WOLFSSL_ASN1_STRING}’
+     const char* pattern = reinterpret_cast<const char*>(common_name->data);
+                                                                    ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:171:16: note: forward declaration of ‘ASN1_STRING {aka struct WOLFSSL_ASN1_STRING}’
+ typedef struct WOLFSSL_ASN1_STRING      WOLFSSL_ASN1_STRING;
+                ^
+In file included from /usr/include/boost/asio/ssl/rfc2818_verification.hpp:99:0,
+                 from /usr/include/boost/asio/ssl.hpp:23,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/impl/rfc2818_verification.ipp:120:45: error: invalid use of incomplete type ‘ASN1_STRING {aka struct WOLFSSL_ASN1_STRING}’
+     std::size_t pattern_length = common_name->length;
+                                             ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:171:16: note: forward declaration of ‘ASN1_STRING {aka struct WOLFSSL_ASN1_STRING}’
+ typedef struct WOLFSSL_ASN1_STRING      WOLFSSL_ASN1_STRING;
+                ^
+In file included from /usr/include/boost/asio/ssl/detail/engine.hpp:163:0,
+                 from /usr/include/boost/asio/ssl/detail/buffered_handshake_op.hpp:21,
+                 from /usr/include/boost/asio/ssl/stream.hpp:29,
+                 from /usr/include/boost/asio/ssl.hpp:24,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp: In constructor ‘boost::asio::ssl::detail::engine::engine(SSL_CTX*)’:
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:50:3: error: ‘::SSL_set_mode’ has not been declared
+   ::SSL_set_mode(ssl_, SSL_MODE_ENABLE_PARTIAL_WRITE);
+   ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:50:24: error: ‘SSL_MODE_ENABLE_PARTIAL_WRITE’ was not declared in this scope
+   ::SSL_set_mode(ssl_, SSL_MODE_ENABLE_PARTIAL_WRITE);
+                        ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:51:3: error: ‘::SSL_set_mode’ has not been declared
+   ::SSL_set_mode(ssl_, SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER);
+   ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:57:3: error: ‘::BIO_new_bio_pair’ has not been declared
+   ::BIO_new_bio_pair(&int_bio, 0, &ext_bio_, 0);
+   ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp: In destructor ‘boost::asio::ssl::detail::engine::~engine()’:
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:63:28: error: ‘SSL_get_app_data’ was not declared in this scope
+   if (SSL_get_app_data(ssl_))
+                            ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:66:29: error: ‘SSL_set_app_data’ was not declared in this scope
+     SSL_set_app_data(ssl_, 0);
+                             ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp: In member function ‘boost::system::error_code boost::asio::ssl::detail::engine::set_verify_mode(boost::asio::ssl::verify_mode, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:81:29: error: ‘::SSL_get_verify_callback’ has not been declared
+   ::SSL_set_verify(ssl_, v, ::SSL_get_verify_callback(ssl_));
+                             ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp: In member function ‘boost::system::error_code boost::asio::ssl::detail::engine::set_verify_depth(int, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:90:3: error: ‘::SSL_set_verify_depth’ has not been declared
+   ::SSL_set_verify_depth(ssl_, depth);
+   ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp: In member function ‘boost::system::error_code boost::asio::ssl::detail::engine::set_verify_callback(boost::asio::ssl::detail::verify_callback_base*, boost::system::error_code&)’:
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:99:28: error: ‘SSL_get_app_data’ was not declared in this scope
+   if (SSL_get_app_data(ssl_))
+                            ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:102:34: error: ‘SSL_set_app_data’ was not declared in this scope
+   SSL_set_app_data(ssl_, callback);
+                                  ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp: In static member function ‘static int boost::asio::ssl::detail::engine::verify_callback_function(int, X509_STORE_CTX*)’:
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:119:31: error: ‘SSL_get_app_data’ was not declared in this scope
+       if (SSL_get_app_data(ssl))
+                               ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp: In member function ‘const boost::system::error_code& boost::asio::ssl::detail::engine::map_error_code(boost::system::error_code&) const’:
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:204:28: error: ‘BIO_wpending’ was not declared in this scope
+   if (BIO_wpending(ext_bio_))
+                            ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:207:18: error: ‘ERR_LIB_SSL’ was not declared in this scope
+         ERR_PACK(ERR_LIB_SSL, 0, SSL_R_SHORT_READ),
+                  ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:207:34: error: ‘SSL_R_SHORT_READ’ was not declared in this scope
+         ERR_PACK(ERR_LIB_SSL, 0, SSL_R_SHORT_READ),
+                                  ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:207:50: error: ‘ERR_PACK’ was not declared in this scope
+         ERR_PACK(ERR_LIB_SSL, 0, SSL_R_SHORT_READ),
+                                                  ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:214:11: error: invalid use of incomplete type ‘SSL {aka struct WOLFSSL}’
+   if (ssl_->version == SSL2_VERSION)
+           ^
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/wolfssl/openssl/ssl.h:33:0,
+                 from /usr/include/boost/asio/ssl/detail/openssl_types.hpp:20,
+                 from /usr/include/boost/asio/ssl/context_base.hpp:19,
+                 from /usr/include/boost/asio/ssl/context.hpp:27,
+                 from /usr/include/boost/asio/ssl.hpp:19,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/usr/local/include/wolfssl/ssl.h:106:16: note: forward declaration of ‘SSL {aka struct WOLFSSL}’
+ typedef struct WOLFSSL          WOLFSSL;
+                ^
+In file included from /usr/include/boost/asio/ssl/detail/engine.hpp:163:0,
+                 from /usr/include/boost/asio/ssl/detail/buffered_handshake_op.hpp:21,
+                 from /usr/include/boost/asio/ssl/stream.hpp:29,
+                 from /usr/include/boost/asio/ssl.hpp:24,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:36,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
+                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
+                 from ../debug_client.cpp:32:
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:214:24: error: ‘SSL2_VERSION’ was not declared in this scope
+   if (ssl_->version == SSL2_VERSION)
+                        ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:221:18: error: ‘ERR_LIB_SSL’ was not declared in this scope
+         ERR_PACK(ERR_LIB_SSL, 0, SSL_R_SHORT_READ),
+                  ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:221:34: error: ‘SSL_R_SHORT_READ’ was not declared in this scope
+         ERR_PACK(ERR_LIB_SSL, 0, SSL_R_SHORT_READ),
+                                  ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:221:50: error: ‘ERR_PACK’ was not declared in this scope
+         ERR_PACK(ERR_LIB_SSL, 0, SSL_R_SHORT_READ),
+                                                  ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp: In member function ‘boost::asio::ssl::detail::engine::want boost::asio::ssl::detail::engine::perform(int (boost::asio::ssl::detail::engine::*)(void*, std::size_t), void*, std::size_t, boost::system::error_code&, std::size_t*)’:
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:238:39: error: ‘::wolfSSL_BIO_ctrl_pending’ has not been declared
+   std::size_t pending_output_before = ::BIO_ctrl_pending(ext_bio_);
+                                       ^
+/usr/include/boost/asio/ssl/detail/impl/engine.ipp:243:38: error: ‘::wolfSSL_BIO_ctrl_pending’ has not been declared
+   std::size_t pending_output_after = ::BIO_ctrl_pending(ext_bio_);
+                                      ^
+In file included from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33:0,
+                 from ../debug_client.cpp:32:
+/home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp: In member function ‘std::error_code websocketpp::transport::asio::tls_socket::connection::translate_ec(ErrorCodeType)’:
+/home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:358:47: error: ‘SSL_R_SHORT_READ’ was not declared in this scope
+             if (ERR_GET_REASON(ec.value()) == SSL_R_SHORT_READ) {
+                                               ^
