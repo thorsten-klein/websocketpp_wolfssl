@@ -28,14 +28,18 @@ EXAMPLE_DIR=$ROOT_DIR/websocketpp/examples/debug_client
 cd $EXAMPLE_DIR
 mkdir with_openssl
 cd with_openssl
+echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "Compiling $PWD ..."
+echo "++++++++++++++++++++++++++++++++++++++++++++++"
 g++ ../*.cpp -std=c++11 -I$WEBSOCKETPP_DIR -I$ASIO_DIR/include -lcrypto -lboost_system -lpthread -lssl
 
 # using wolfssl
 cd $EXAMPLE_DIR
 mkdir with_wolfssl
 cd with_wolfssl
+echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "Compiling $PWD ..."
+echo "++++++++++++++++++++++++++++++++++++++++++++++"
 g++ ../*.cpp -std=c++11 -I$WEBSOCKETPP_DIR -I$ASIO_DIR/include -I$WOLFSSL_SRC_DIR/wolfssl -lcrypto -lboost_system -lpthread -I$WOLFSSL_INSTALL_DIR/usr/local/include -I$WOLFSSL_INSTALL_DIR/usr/local/include/wolfssl
 
 
