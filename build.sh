@@ -17,12 +17,12 @@ WOLFSSL_INSTALL_DIR=$WOLFSSL_SRC_DIR/installed
 # compile wolfssl
 unzip $WOLFSSL_SRC_ZIP -d $WOLFSSL_DIR 
 cd $WOLFSSL_SRC_DIR
-./configure --enable-opensslextra
-make install DESTDIR=$WOLFSSL_INSTALL_DIR
+./configure --enable-opensslextra --prefix=$WOLFSSL_INSTALL_DIR
+make install
 
 
 # compile websockettpp example
-EXAMPLE_DIR=$ROOT_DIR/websocketpp/examples/debug_client
+EXAMPLE_DIR=$ROOT_DIR/examples/debug_client
 
 # using openssl
 cd $EXAMPLE_DIR
@@ -40,7 +40,7 @@ cd with_wolfssl
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "Compiling $PWD ..."
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
-g++ ../*.cpp -std=c++11 -I$WEBSOCKETPP_DIR -I$ASIO_DIR/include -I$WOLFSSL_SRC_DIR/wolfssl -lcrypto -lboost_system -lpthread -I$WOLFSSL_INSTALL_DIR/usr/local/include -I$WOLFSSL_INSTALL_DIR/usr/local/include/wolfssl -L$WOLFSSL_INSTALL_DIR/usr/local/lib -lwolfssl
+g++ ../*.cpp -std=c++11 -I$WEBSOCKETPP_DIR -I$ASIO_DIR/include -lboost_system -lpthread -I$WOLFSSL_INSTALL_DIR/include -I$WOLFSSL_INSTALL_DIR/include/wolfssl -L$WOLFSSL_INSTALL_DIR/lib -lwolfssl -DWOLFSSL_EXAMPLE
 
 
 # NOTE: using ASIO Standalone
