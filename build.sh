@@ -31,7 +31,7 @@ cd with_openssl
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "Compiling $PWD ..."
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
-g++ ../*.cpp -std=c++11 -I$WEBSOCKETPP_DIR -I$ASIO_DIR/include -lcrypto -lboost_system -lpthread -lssl
+g++ ../*.cpp -std=c++11 -I$WEBSOCKETPP_DIR -I$ASIO_DIR/include -lcrypto -lboost_system -lpthread -lssl -DASIO_STANDALONE
 
 # using wolfssl
 cd $EXAMPLE_DIR
@@ -40,7 +40,7 @@ cd with_wolfssl
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "Compiling $PWD ..."
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
-g++ ../*.cpp -std=c++11 -I$WEBSOCKETPP_DIR -I$ASIO_DIR/include -lboost_system -lpthread -I$WOLFSSL_INSTALL_DIR/include -I$WOLFSSL_INSTALL_DIR/include/wolfssl -L$WOLFSSL_INSTALL_DIR/lib -lwolfssl -DWOLFSSL_EXAMPLE
+g++ ../*.cpp -std=c++11 -I$WEBSOCKETPP_DIR -I$ASIO_DIR/include -lboost_system -lpthread -I$WOLFSSL_INSTALL_DIR/include -I$WOLFSSL_INSTALL_DIR/include/wolfssl -L$WOLFSSL_INSTALL_DIR/lib -lwolfssl -DWOLFSSL_EXAMPLE -DASIO_STANDALONE
 
 
 # NOTE: using ASIO Standalone
