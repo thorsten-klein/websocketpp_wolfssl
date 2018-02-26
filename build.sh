@@ -6,18 +6,16 @@ ROOT_DIR=$PWD
 
 WEBSOCKETPP_DIR=$ROOT_DIR/websocketpp
 ASIO_DIR=$ROOT_DIR/asio/asio-1.10.8
-WOLFSSL_DIR=$ROOT_DIR/wolfssl
 
-WOLFSSL_SRC_ZIP=$WOLFSSL_DIR/wolfssl-3.13.0.zip
-WOLFSSL_SRC_DIR=$WOLFSSL_DIR/wolfssl-3.13.0
+WOLFSSL_SRC_DIR=$ROOT_DIR/wolfssl_github
 WOLFSSL_INSTALL_DIR=$WOLFSSL_SRC_DIR/installed
 
 # initialize submodules
-git submodule update --init –recursive
+git submodule update --init --recursive
 
 # compile wolfssl
-unzip $WOLFSSL_SRC_ZIP -d $WOLFSSL_DIR 
 cd $WOLFSSL_SRC_DIR
+./autogen.sh
 ./configure --enable-opensslextra --prefix=$WOLFSSL_INSTALL_DIR
 make install
 
@@ -42,15 +40,6 @@ echo "++++++++++++++++++++++++++++++++++++++++++++++"
 echo "Compiling $PWD ..."
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 g++ ../*.cpp -std=c++11 -I$WEBSOCKETPP_DIR -I$ASIO_DIR/include -lboost_system -lpthread -I$WOLFSSL_INSTALL_DIR/include -I$WOLFSSL_INSTALL_DIR/include/wolfssl -L$WOLFSSL_INSTALL_DIR/lib -lwolfssl -DWOLFSSL_EXAMPLE -DASIO_STANDALONE
-
-
-# NOTE: using ASIO Standalone
-## DOES NOT WORK WITH OPENSSL
-## --> OPENSSL NEEDS BOOST ASIO
-#
-# g++ ../*.cpp -I$WEBSOCKETPP_DIR -I$ASIO_DIR/include -std=c++11 -I$WOLFSSL_SRC_DIR/wolfssl -lcrypto -lboost_system -lpthread -lssl -DASIO_STANDALONE
-
-
 
 
 echo
