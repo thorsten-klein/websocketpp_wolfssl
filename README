@@ -1,23 +1,6 @@
 
 Following error output occurs when trying to compile websocketpp's example "debug_client" with wolfssl:
 (The example is copied to folder examples/debug_client)
-
-In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:29:0,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl.hpp:19,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:34,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
-                 from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_init.hpp:48:29: error: ‘SSL_COMP’ has not been declared
-   ASIO_DECL static STACK_OF(SSL_COMP)* get_null_compression_methods();
-                             ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_init.hpp:48:37: error: ISO C++ forbids declaration of ‘STACK_OF’ with no type [-fpermissive]
-   ASIO_DECL static STACK_OF(SSL_COMP)* get_null_compression_methods();
-                                     ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_init.hpp:48:37: error: expected ‘;’ at end of member declaration
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_init.hpp:48:69: error: ISO C++ forbids declaration of ‘get_null_compression_methods’ with no type [-fpermissive]
-   ASIO_DECL static STACK_OF(SSL_COMP)* get_null_compression_methods();
-                                                                     ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_init.hpp:98:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:29,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl.hpp:19,
@@ -25,32 +8,6 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp:98:12: error: ‘SSL_COMP’ has not been declared
-   STACK_OF(SSL_COMP)* get_null_compression_methods() const
-            ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp:98:20: error: ISO C++ forbids declaration of ‘STACK_OF’ with no type [-fpermissive]
-   STACK_OF(SSL_COMP)* get_null_compression_methods() const
-                    ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp:98:20: error: expected ‘;’ at end of member declaration
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp:98:54: error: ISO C++ forbids declaration of ‘get_null_compression_methods’ with no type [-fpermissive]
-   STACK_OF(SSL_COMP)* get_null_compression_methods() const
-                                                      ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp:136:12: error: ‘SSL_COMP’ has not been declared
-   STACK_OF(SSL_COMP)* null_compression_methods_;
-            ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp:136:20: error: ISO C++ forbids declaration of ‘STACK_OF’ with no type [-fpermissive]
-   STACK_OF(SSL_COMP)* null_compression_methods_;
-                    ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp:136:20: error: expected ‘;’ at end of member declaration
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp:136:3: error: ‘int asio::ssl::detail::openssl_init_base::do_init::STACK_OF(int)’ cannot be overloaded
-   STACK_OF(SSL_COMP)* null_compression_methods_;
-   ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp:98:3: error: with ‘int asio::ssl::detail::openssl_init_base::do_init::STACK_OF(int)’
-   STACK_OF(SSL_COMP)* get_null_compression_methods() const
-   ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp:136:23: error: ISO C++ forbids declaration of ‘null_compression_methods_’ with no type [-fpermissive]
-   STACK_OF(SSL_COMP)* null_compression_methods_;
-                       ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp: In constructor ‘asio::ssl::detail::openssl_init_base::do_init::do_init()’:
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp:54:54: error: ‘sk_SSL_COMP_new_null’ was not declared in this scope
      null_compression_methods_ = sk_SSL_COMP_new_null();
@@ -65,10 +22,6 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp:91:23: error: expected id-expression before ‘;’ token
      ::ENGINE_cleanup();
                        ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp: At global scope:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/openssl_init.ipp:150:9: error: expected constructor, destructor, or type conversion before ‘(’ token
- STACK_OF(SSL_COMP)* openssl_init_base::get_null_compression_methods()
-         ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:26:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl.hpp:19,
@@ -76,6 +29,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
+/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/error.hpp: At global scope:
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/error.hpp:47:31: error: ‘ERR_LIB_SSL’ was not declared in this scope
    stream_truncated = ERR_PACK(ERR_LIB_SSL, 0, SSL_R_SHORT_READ)
                                ^
@@ -98,14 +52,11 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:103:29: error: ‘::SSLv3_method’ has not been declared
      handle_ = ::SSL_CTX_new(::SSLv3_method());
                              ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:114:29: error: ‘::TLSv1_method’ has not been declared
-     handle_ = ::SSL_CTX_new(::TLSv1_method());
-                             ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp: In destructor ‘asio::ssl::context::~context()’:
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:233:32: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
      void* cb_userdata = handle_->default_passwd_callback_userdata;
                                 ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -114,7 +65,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -126,7 +77,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:244:14: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
        handle_->default_passwd_callback_userdata = 0;
               ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -135,7 +86,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -154,7 +105,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:287:12: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
      handle_->comp_methods = SSL_COMP_get_compression_methods();
             ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -163,7 +114,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -172,14 +123,11 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:293:3: error: ‘::SSL_CTX_clear_options’ has not been declared
-   ::SSL_CTX_clear_options(handle_, o);
-   ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp: In member function ‘asio::error_code asio::ssl::context::set_options(asio::ssl::context_base::options, asio::error_code&)’:
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:319:12: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
      handle_->comp_methods =
             ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -188,7 +136,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -197,29 +145,15 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:320:71: error: cannot call member function ‘int* asio::ssl::detail::openssl_init_base::get_null_compression_methods()’ without object
-       asio::ssl::detail::openssl_init<>::get_null_compression_methods();
-                                                                       ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp: In member function ‘asio::error_code asio::ssl::context::set_verify_mode(asio::ssl::context_base::verify_mode, asio::error_code&)’:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:342:36: error: ‘::SSL_CTX_get_verify_callback’ has not been declared
-   ::SSL_CTX_set_verify(handle_, v, ::SSL_CTX_get_verify_callback(handle_));
-                                    ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp: In member function ‘asio::error_code asio::ssl::context::set_verify_depth(int, asio::error_code&)’:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:358:3: error: ‘::SSL_CTX_set_verify_depth’ has not been declared
-   ::SSL_CTX_set_verify_depth(handle_, depth);
-   ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp: In member function ‘asio::error_code asio::ssl::context::use_certificate(const asio::const_buffer&, asio::ssl::context_base::file_format, asio::error_code&)’:
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:487:9: error: ‘::SSL_CTX_use_certificate_ASN1’ has not been declared
      if (::SSL_CTX_use_certificate_ASN1(handle_,
          ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:503:13: error: ‘::SSL_CTX_use_certificate’ has not been declared
-         if (::SSL_CTX_use_certificate(handle_, cert.p) == 1)
-             ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp: In member function ‘asio::error_code asio::ssl::context::use_certificate_chain(const asio::const_buffer&, asio::error_code&)’:
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:584:40: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
      pem_password_cb* callback = handle_->default_passwd_callback;
                                         ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -228,7 +162,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -240,7 +174,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:585:32: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
      void* cb_userdata = handle_->default_passwd_callback_userdata;
                                 ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -249,7 +183,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -261,13 +195,10 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:593:29: error: ‘ERR_R_PEM_LIB’ was not declared in this scope
        ec = asio::error_code(ERR_R_PEM_LIB,
                              ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:598:18: error: ‘::SSL_CTX_use_certificate’ has not been declared
-     int result = ::SSL_CTX_use_certificate(handle_, cert.p);
-                  ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:610:16: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
      if (handle_->extra_certs)
                 ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -276,7 +207,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -285,13 +216,10 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:612:7: error: ‘::sk_X509_pop_free’ has not been declared
-       ::sk_X509_pop_free(handle_->extra_certs, X509_free);
-       ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:612:33: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
        ::sk_X509_pop_free(handle_->extra_certs, X509_free);
                                  ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -300,7 +228,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -312,7 +240,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:613:14: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
        handle_->extra_certs = 0;
               ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -321,7 +249,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -330,23 +258,11 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:630:14: error: ‘::wolfSSL_ERR_peek_last_error’ has not been declared
-     result = ::ERR_peek_last_error();
-              ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:631:28: error: ‘ERR_GET_LIB’ was not declared in this scope
-     if ((ERR_GET_LIB(result) == ERR_LIB_PEM)
-                            ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:631:33: error: ‘ERR_LIB_PEM’ was not declared in this scope
-     if ((ERR_GET_LIB(result) == ERR_LIB_PEM)
-                                 ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:632:39: error: ‘PEM_R_NO_START_LINE’ was not declared in this scope
-         && (ERR_GET_REASON(result) == PEM_R_NO_START_LINE))
-                                       ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp: In member function ‘asio::error_code asio::ssl::context::use_private_key(const asio::const_buffer&, asio::ssl::context_base::file_format, asio::error_code&)’:
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:688:40: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
      pem_password_cb* callback = handle_->default_passwd_callback;
                                         ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -355,7 +271,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -367,7 +283,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:689:32: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
      void* cb_userdata = handle_->default_passwd_callback_userdata;
                                 ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -376,7 +292,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -391,14 +307,11 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:702:27: error: ‘::PEM_read_bio_PrivateKey’ has not been declared
        evp_private_key.p = ::PEM_read_bio_PrivateKey(
                            ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:715:11: error: ‘::SSL_CTX_use_PrivateKey’ has not been declared
-       if (::SSL_CTX_use_PrivateKey(handle_, evp_private_key.p) == 1)
-           ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp: In member function ‘asio::error_code asio::ssl::context::use_rsa_private_key(const asio::const_buffer&, asio::ssl::context_base::file_format, asio::error_code&)’:
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:755:40: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
      pem_password_cb* callback = handle_->default_passwd_callback;
                                         ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -407,7 +320,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -419,7 +332,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:756:32: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
      void* cb_userdata = handle_->default_passwd_callback_userdata;
                                 ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -428,7 +341,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -446,10 +359,6 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:782:11: error: ‘::SSL_CTX_use_RSAPrivateKey’ has not been declared
        if (::SSL_CTX_use_RSAPrivateKey(handle_, rsa_private_key.p) == 1)
            ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp: In member function ‘asio::error_code asio::ssl::context::do_use_tmp_dh(BIO*, asio::error_code&)’:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:926:21: error: ‘::PEM_read_bio_DHparams’ has not been declared
-   dh_cleanup dh = { ::PEM_read_bio_DHparams(bio, 0, 0, 0) };
-                     ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp: In member function ‘asio::error_code asio::ssl::context::do_set_verify_callback(asio::ssl::detail::verify_callback_base*, asio::error_code&)’:
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:945:35: error: ‘SSL_CTX_get_app_data’ was not declared in this scope
    if (SSL_CTX_get_app_data(handle_))
@@ -461,9 +370,6 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
        ::SSL_CTX_get_verify_mode(handle_),
        ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp: In static member function ‘static int asio::ssl::context::verify_callback_function(int, X509_STORE_CTX*)’:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:969:29: error: ‘::SSL_get_SSL_CTX’ has not been declared
-       if (SSL_CTX* handle = ::SSL_get_SSL_CTX(ssl))
-                             ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:971:40: error: ‘SSL_CTX_get_app_data’ was not declared in this scope
          if (SSL_CTX_get_app_data(handle))
                                         ^
@@ -471,7 +377,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:994:31: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
    void* old_callback = handle_->default_passwd_callback_userdata;
                                ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -480,7 +386,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:784:0,
@@ -492,7 +398,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/context.ipp:995:10: error: invalid use of incomplete type ‘SSL_CTX {aka struct WOLFSSL_CTX}’
    handle_->default_passwd_callback_userdata = callback;
           ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -501,7 +407,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:112:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:113:16: note: forward declaration of ‘SSL_CTX {aka struct WOLFSSL_CTX}’
  typedef struct WOLFSSL_CTX      WOLFSSL_CTX;
                 ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/rfc2818_verification.hpp:97:0,
@@ -530,90 +436,21 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:60:58: error: expected ‘)’ before ‘;’ token
        X509_get_ext_d2i(cert, NID_subject_alt_name, 0, 0));
                                                           ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:61:47: error: ‘sk_GENERAL_NAME_num’ was not declared in this scope
-   for (int i = 0; i < sk_GENERAL_NAME_num(gens); ++i)
-                                               ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:63:54: error: ‘sk_GENERAL_NAME_value’ was not declared in this scope
-     GENERAL_NAME* gen = sk_GENERAL_NAME_value(gens, i);
-                                                      ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:64:12: error: invalid use of incomplete type ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
-     if (gen->type == GEN_DNS && !is_address)
-            ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl.hpp:19,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:34,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
-                 from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:169:16: note: forward declaration of ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
- typedef struct WOLFSSL_ASN1_OBJECT    WOLFSSL_ASN1_OBJECT;
-                ^
-In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/rfc2818_verification.hpp:97:0,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl.hpp:23,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:34,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
-                 from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:64:22: error: ‘GEN_DNS’ was not declared in this scope
-     if (gen->type == GEN_DNS && !is_address)
-                      ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:66:7: error: ‘ASN1_IA5STRING’ was not declared in this scope
        ASN1_IA5STRING* domain = gen->d.dNSName;
        ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:66:23: error: ‘domain’ was not declared in this scope
        ASN1_IA5STRING* domain = gen->d.dNSName;
                        ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:66:35: error: invalid use of incomplete type ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
+/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:66:39: error: ‘struct WOLFSSL_ASN1_OBJECT::d’ has no member named ‘dNSName’
        ASN1_IA5STRING* domain = gen->d.dNSName;
-                                   ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl.hpp:19,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:34,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
-                 from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:169:16: note: forward declaration of ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
- typedef struct WOLFSSL_ASN1_OBJECT    WOLFSSL_ASN1_OBJECT;
-                ^
-In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/rfc2818_verification.hpp:97:0,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl.hpp:23,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:34,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
-                 from ../debug_client.cpp:36:
+                                       ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:67:27: error: ‘V_ASN1_IA5STRING’ was not declared in this scope
        if (domain->type == V_ASN1_IA5STRING && domain->data && domain->length)
                            ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:73:34: error: ‘GENERAL_NAMES_free’ was not declared in this scope
            GENERAL_NAMES_free(gens);
                                   ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:78:17: error: invalid use of incomplete type ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
-     else if (gen->type == GEN_IPADD && is_address)
-                 ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl.hpp:19,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:34,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
-                 from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:169:16: note: forward declaration of ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
- typedef struct WOLFSSL_ASN1_OBJECT    WOLFSSL_ASN1_OBJECT;
-                ^
-In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/rfc2818_verification.hpp:97:0,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl.hpp:23,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:34,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
-                 from ../debug_client.cpp:36:
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:78:27: error: ‘GEN_IPADD’ was not declared in this scope
      else if (gen->type == GEN_IPADD && is_address)
                            ^
@@ -623,30 +460,9 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:80:26: error: ‘ip_address’ was not declared in this scope
        ASN1_OCTET_STRING* ip_address = gen->d.iPAddress;
                           ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:80:42: error: invalid use of incomplete type ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
+/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:80:46: error: ‘struct WOLFSSL_ASN1_OBJECT::d’ has no member named ‘iPAddress’
        ASN1_OCTET_STRING* ip_address = gen->d.iPAddress;
-                                          ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl.hpp:19,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:34,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
-                 from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:169:16: note: forward declaration of ‘GENERAL_NAME {aka struct WOLFSSL_ASN1_OBJECT}’
- typedef struct WOLFSSL_ASN1_OBJECT    WOLFSSL_ASN1_OBJECT;
-                ^
-In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/rfc2818_verification.hpp:97:0,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl.hpp:23,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:34,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
-                 from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:81:31: error: ‘V_ASN1_OCTET_STRING’ was not declared in this scope
-       if (ip_address->type == V_ASN1_OCTET_STRING && ip_address->data)
-                               ^
+                                              ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:88:36: error: ‘GENERAL_NAMES_free’ was not declared in this scope
              GENERAL_NAMES_free(gens);
                                     ^
@@ -656,24 +472,6 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:104:26: error: ‘GENERAL_NAMES_free’ was not declared in this scope
    GENERAL_NAMES_free(gens);
                           ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:111:48: error: ‘NID_commonName’ was not declared in this scope
-   while ((i = X509_NAME_get_index_by_NID(name, NID_commonName, i)) >= 0)
-                                                ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:111:65: error: ‘X509_NAME_get_index_by_NID’ was not declared in this scope
-   while ((i = X509_NAME_get_index_by_NID(name, NID_commonName, i)) >= 0)
-                                                                 ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:113:5: error: ‘X509_NAME_ENTRY’ was not declared in this scope
-     X509_NAME_ENTRY* name_entry = X509_NAME_get_entry(name, i);
-     ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:113:22: error: ‘name_entry’ was not declared in this scope
-     X509_NAME_ENTRY* name_entry = X509_NAME_get_entry(name, i);
-                      ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:113:62: error: ‘X509_NAME_get_entry’ was not declared in this scope
-     X509_NAME_ENTRY* name_entry = X509_NAME_get_entry(name, i);
-                                                              ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/impl/rfc2818_verification.ipp:114:54: error: ‘X509_NAME_ENTRY_get_data’ was not declared in this scope
-     common_name = X509_NAME_ENTRY_get_data(name_entry);
-                                                      ^
 In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/engine.hpp:161:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/buffered_handshake_op.hpp:21,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/stream.hpp:29,
@@ -692,32 +490,10 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp:56:3: error: ‘::BIO_new_bio_pair’ has not been declared
    ::BIO_new_bio_pair(&int_bio, 0, &ext_bio_, 0);
    ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp: In destructor ‘asio::ssl::detail::engine::~engine()’:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp:62:28: error: ‘SSL_get_app_data’ was not declared in this scope
-   if (SSL_get_app_data(ssl_))
-                            ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp:65:29: error: ‘SSL_set_app_data’ was not declared in this scope
-     SSL_set_app_data(ssl_, 0);
-                             ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp: In member function ‘asio::error_code asio::ssl::detail::engine::set_verify_mode(asio::ssl::verify_mode, asio::error_code&)’:
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp:80:29: error: ‘::SSL_get_verify_callback’ has not been declared
    ::SSL_set_verify(ssl_, v, ::SSL_get_verify_callback(ssl_));
                              ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp: In member function ‘asio::error_code asio::ssl::detail::engine::set_verify_depth(int, asio::error_code&)’:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp:89:3: error: ‘::SSL_set_verify_depth’ has not been declared
-   ::SSL_set_verify_depth(ssl_, depth);
-   ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp: In member function ‘asio::error_code asio::ssl::detail::engine::set_verify_callback(asio::ssl::detail::verify_callback_base*, asio::error_code&)’:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp:98:28: error: ‘SSL_get_app_data’ was not declared in this scope
-   if (SSL_get_app_data(ssl_))
-                            ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp:101:34: error: ‘SSL_set_app_data’ was not declared in this scope
-   SSL_set_app_data(ssl_, callback);
-                                  ^
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp: In static member function ‘static int asio::ssl::detail::engine::verify_callback_function(int, X509_STORE_CTX*)’:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp:118:31: error: ‘SSL_get_app_data’ was not declared in this scope
-       if (SSL_get_app_data(ssl))
-                               ^
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp: In member function ‘const error_code& asio::ssl::detail::engine::map_error_code(asio::error_code&) const’:
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp:203:28: error: ‘BIO_wpending’ was not declared in this scope
    if (BIO_wpending(ext_bio_))
@@ -725,7 +501,7 @@ In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/inc
 /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp:212:11: error: invalid use of incomplete type ‘SSL {aka struct WOLFSSL}’
    if (ssl_->version == SSL2_VERSION)
            ^
-In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/openssl/ssl.h:33:0,
+In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/openssl/ssl.h:35:0,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/openssl_types.hpp:20,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context_base.hpp:19,
                  from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/context.hpp:27,
@@ -734,23 +510,13 @@ In file included from /home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
                  from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
                  from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/wolfssl/wolfssl-3.13.0/installed/include/wolfssl/ssl.h:106:16: note: forward declaration of ‘SSL {aka struct WOLFSSL}’
+/home/default/GIT/websocketpp_wolfssl/wolfssl_github/installed/include/wolfssl/ssl.h:107:16: note: forward declaration of ‘SSL {aka struct WOLFSSL}’
  typedef struct WOLFSSL          WOLFSSL;
                 ^
-In file included from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/engine.hpp:161:0,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/buffered_handshake_op.hpp:21,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/stream.hpp:29,
-                 from /home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl.hpp:24,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/common/asio_ssl.hpp:34,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:35,
-                 from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33,
-                 from ../debug_client.cpp:36:
-/home/default/GIT/websocketpp_wolfssl/asio/asio-1.10.8/include/asio/ssl/detail/impl/engine.ipp:212:24: error: ‘SSL2_VERSION’ was not declared in this scope
-   if (ssl_->version == SSL2_VERSION)
-                        ^
 In file included from /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/config/asio_client.hpp:33:0,
                  from ../debug_client.cpp:36:
 /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp: In member function ‘std::error_code websocketpp::transport::asio::tls_socket::connection::translate_ec(ErrorCodeType)’:
 /home/default/GIT/websocketpp_wolfssl/websocketpp/websocketpp/transport/asio/security/tls.hpp:358:47: error: ‘SSL_R_SHORT_READ’ was not declared in this scope
              if (ERR_GET_REASON(ec.value()) == SSL_R_SHORT_READ) {
                                                ^
+
