@@ -12,7 +12,8 @@ WOLFSSL_SRC_ZIP=$WOLFSSL_DIR/wolfssl-3.13.0.zip
 WOLFSSL_SRC_DIR=$WOLFSSL_DIR/wolfssl-3.13.0
 WOLFSSL_INSTALL_DIR=$WOLFSSL_SRC_DIR/installed
 
-
+# initialize submodules
+git submodule update --init –recursive
 
 # compile wolfssl
 unzip $WOLFSSL_SRC_ZIP -d $WOLFSSL_DIR 
